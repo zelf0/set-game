@@ -1,0 +1,83 @@
+.card {
+    border-radius: 5%;
+    border: 2px solid black;
+    margin: 10%;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* horizontal */
+    align-items: center; /* vertical */
+    background-color: transparent;
+}
+
+.clicked {
+    background-color: #aaccff;
+    border-color: #2966ff;
+}
+
+.correct {
+    background-color: #ccffcc;
+    border-color: green;
+}
+
+.incorrect {
+    background-color: #ffcccc;
+    border-color: red;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    overflow: hidden;
+}
+
+.shape-0 {
+    margin: 5%;
+    width: 100px;
+    height: 50px;
+    border-radius: 50%;
+    border-width: 2px;
+}
+
+.shape-1 {
+    margin: 5%;
+    width: 100px;
+    height: 50px;
+}
+
+
+.shape-2 {
+    margin: 5%;
+    width: 100px;
+    height: 50px;
+    transform: skew(20deg);
+}
+
+.color-0 {
+    background-color: red;
+    border: 2px solid red;
+}
+
+.color-1 {
+    background-color: green;
+    border: 2px solid green;
+}
+
+.color-2 {
+    background-color: purple;
+    border: 2px solid  purple;
+}
+
+.style-0 {
+    background-color: transparent !important;
+}
+
+.style-1 {
+    
+}
+
+.style-2 {
+    opacity: 50%;
+}

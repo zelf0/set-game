@@ -1,3 +1,24 @@
+#header {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vh;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+#popup {
+    background-color: rgba(100, 200, 255, 0.8);
+    display: none;
+    height: 50vh;
+    margin-left: 25%;
+    width: 50vw;
+    z-index: 10;
+    position: absolute;
+    align-items: center;
+    flex-direction: column;
+}
+
 .card {
     border-radius: 5%;
     border: 2px solid black;
@@ -9,6 +30,7 @@
     justify-content: center; /* horizontal */
     align-items: center; /* vertical */
     background-color: transparent;
+    height: 22vh;
 }
 
 .clicked {
@@ -29,29 +51,34 @@
 #container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr; 
+    width: 80vh;
+    height: 80vh;
+    margin-left: auto;
+	margin-right: auto;
+    /* border: 2px solid green; */
     overflow: hidden;
 }
 
 .shape-0 {
     margin: 5%;
-    width: 100px;
-    height: 50px;
+    width: 70%;
+    height: 5vh;
     border-radius: 50%;
     border-width: 2px;
 }
 
 .shape-1 {
     margin: 5%;
-    width: 100px;
-    height: 50px;
+    width: 70%;
+    height: 5vh;
 }
 
 
 .shape-2 {
     margin: 5%;
-    width: 100px;
-    height: 50px;
+    width: 70%;
+    height: 5vh;
     transform: skew(20deg);
 }
 
@@ -79,5 +106,5 @@
 }
 
 .style-2 {
-    opacity: 50%;
+    opacity: 30%;
 }

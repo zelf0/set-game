@@ -3,7 +3,7 @@ var clicked = 0;
 var cardsClicked = [];
 var cardsArray = [];
 var container = document.getElementById("container");
-
+var timeAllotted = 150000;
 
 function Card(shape, color, style, number) {
     this.shape = shape;
@@ -34,36 +34,44 @@ function createCards() {
                         newShape.classList.add("shape-" + shape);
                         newShape.classList.add("style-" + style);
                         newShape.classList.add("color-" + color);
+                        newShape.addEventListener('click', clickShape);
                         newElem.appendChild(newShape);
                     }
                 }
             }
         }
     }
-    document.querySelectorAll(".card").forEach(item => {
-        item.addEventListener('click', click, false)
+    document.querySelectorAll(".card").forEach(card => {
+        card.addEventListener('click', click)
       })
+    console.log(document.querySelectorAll(".card"));
+}
+
+function clickShape(e) {
+    console.log(e.target.classList + " is child of " + e.target.parentElement.classList);
+    e.target.parentElement.click();
+
 }
 
 function click(e) {
-    if (cardsClicked.indexOf(e.target.id) < 0)
-    {
-        console.log('click');
-        e.target.classList.add("clicked");
-        cardsClicked.push(e.target);
-        if (cardsClicked.length === 3) {
-            check(cardsClicked);
+    if (e.target.classList.contains("card")) {
+        if (cardsClicked.indexOf(e.target) < 0)
+        {
+            console.log('click' + e.target);
+            e.target.classList.add("clicked");
+            cardsClicked.push(e.target);
+            if (cardsClicked.length === 3) {
+                check(cardsClicked);
+            }
         }
-    }
-    else {
-        unclick(e.target);
+        else {
+            e.target.classList.remove("clicked");
+            cardsClicked.splice(cardsClicked.indexOf(e.target), 1);
+        }
     }
 }
 
-function unclick(card) {
-    card.classList.remove("clicked");
-    cardsClicked.splice(cardsClicked.indexOf(card.id), 1)
-}
+
 
 function check(cards) {
     //check same OR different shape, color, style, number
@@ -80,7 +88,7 @@ function check(cards) {
         //take cards off
         //get new cards
         setCount++;
-        document.getElementById("sets").innerHTML = "sets: " + setCount;
+        document.getElementById("sets").innerHTML = "Sets: " + setCount;
     }
     else {
         for (let i = 0; i < cards.length; i++) {
@@ -109,12 +117,55 @@ function checkProp(cards, prop) {
     return false;
 }
 
-function init() {
-    createCards();
+function shuffle() {
     var ul = document.getElementById("container");
     for (var i = ul.children.length; i >= 0; i--) {
         ul.appendChild(ul.children[Math.random() * i | 0]);
     }
+    if (timeAllotted < 149900) {
+        timeAllotted -= 10000;
+        document.getElementById("timer").style.color = "red";
+        setTimeout(function() { 
+            document.getElementById("timer").style.color = "black";
+        }, 1000)
+    }
+
+}
+
+function gameOver() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "flex";
+    document.getElementById("message").innerHTML = "You found " + setCount + " sets!"
+}
+
+function reload() {
+
+    document.location.reload();
+}
+
+var countdown = setInterval(function() {
+    timeAllotted -= 1000;
+    var minutes = Math.floor(timeAllotted / (1000 * 60));
+    var seconds = Math.floor((timeAllotted % (1000 * 60)) / 1000);
+    seconds = seconds.toLocaleString('en-US', {//this is the function that formats the numbers
+        minimumIntegerDigits: 2, //change this to your minimum length
+        useGrouping: false
+      })
+    document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+  
+
+    if (timeAllotted <= 0) {
+      clearInterval(countdown);
+      document.getElementById("timer").style.color = "red";
+      gameOver();
+    }
+}, 1000);
+
+function init() {
+    createCards();
+    shuffle();
+    document.getElementById("shuffle").addEventListener("click", shuffle);
+    document.getElementById("replay").addEventListener("click", reload);
 
 }
 

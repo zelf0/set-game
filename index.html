@@ -12,7 +12,44 @@
     <div id = "header"> 
         <h1 id = "sets"> Sets: 0 </h1>
         <button id = "shuffle"> Reshuffle </button>
+        <button id = "rulesBtn"> How to Play </button>
         <h1 id = "timer"> 2:30 </h1>
+    </div>
+    <div id = "rules" style="display: none;">
+        <p> A set consists of three cards satisfying all of these conditions: </p>
+        <ul>
+            <li>They all have the same number or have three different numbers.</li>
+            <li>They all have the same shape or have three different shapes.</li>
+            <li>They all have the same shading or have three different shadings.</li>
+            <li>They all have the same color or have three different colors.</li>
+        </ul>
+        <p>
+            TL;DR If you can sort a group of three cards into "two of ____ and    one of ____", then it is not a set.
+        </p>
+        <p>
+            For example, these three cards form a set:
+        </p>
+
+        <div style="display: flex;">
+            <div class="exampleCard" style="margin: 2%; width: 140px;">
+                <div class="shape-0 style-1 color-2"></div>
+                <div class="shape-0 style-1 color-2"></div>
+            </div>
+            <div class="exampleCard" style="margin: 2%; width: 140px;">
+                <div class="shape-1 style-2 color-0"></div>
+                <div class="shape-1 style-2 color-0"></div>
+            </div>
+            <div class="exampleCard" style="margin: 2%; width: 140px;">
+                <div class="shape-2 style-0 color-1"></div>
+                <div class="shape-2 style-0 color-1"></div>
+            </div>
+        </div>
+        <p>
+            Given any two cards from the deck, there is one and only one other card that forms a set with them. 
+        </p>
+        <p>
+            Click 3 cards that make a valid set. Find as many sets as you can before the timer runs out. If you can't find any sets, you can click 'Reshuffle'. Be careful, this removes 10 seconds from the timer!
+        </p>
     </div>
     <div id = "popup">
         <h1 id = "message"> </h1>

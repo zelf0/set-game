@@ -19,7 +19,36 @@
     flex-direction: column;
 }
 
+#rules {
+    background-color: #DDC7FF;
+    display: none;
+    width: 80vh;
+    z-index: 10;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    padding: 10px;
+/*    font-size: larger;*/
+    font-family: sans-serif;
+}
+
 .card {
+    border-radius: 5%;
+    border: 2px solid black;
+    margin: 10%;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* horizontal */
+    align-items: center; /* vertical */
+    background-color: transparent;
+    height: 22vh;
+}
+
+.exampleCard {
     border-radius: 5%;
     border: 2px solid black;
     margin: 10%;

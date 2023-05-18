@@ -161,15 +161,25 @@ var countdown = setInterval(function() {
     }
 }, 1000);
 
+
+function toggleRules() {
+    console.log("rules toggled");
+    let rules = document.getElementById("rules");
+
+    if(rules.style.display === "none") {
+        rules.style.display = "block";
+    } else {
+        rules.style.display = "none";
+    }
+}
+
 function init() {
     createCards();
     shuffle();
     document.getElementById("shuffle").addEventListener("click", shuffle);
     document.getElementById("replay").addEventListener("click", reload);
+    document.getElementById("rulesBtn").addEventListener("click", toggleRules);
 
 }
-
-
-
 
 window.addEventListener("load", init, false);
